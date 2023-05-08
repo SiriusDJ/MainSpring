@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MainSpring.iml" filepath="$PROJECT_DIR$/.idea/MainSpring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iServiceConfig/ServiceConfig.iml" filepath="$PROJECT_DIR$/iServiceConfig/ServiceConfig.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iOrderService/iOrderService.iml" filepath="$PROJECT_DIR$/iOrderService/iOrderService.iml" />
       <module fileurl="file://$PROJECT_DIR$/iProductService/iProductService.iml" filepath="$PROJECT_DIR$/iProductService/iProductService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iServiceRegistry/iServiceRegistry.iml" filepath="$PROJECT_DIR$/iServiceRegistry/iServiceRegistry.iml" />
     </modules>
   </component>
 </project>

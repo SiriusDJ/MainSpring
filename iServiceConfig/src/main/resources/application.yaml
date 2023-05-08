@@ -1,11 +1,15 @@
 server:
-  port: 8002
+  port: 8051
 
 spring:
   application:
-    name: SERVICE-CONFIG
-
-
+    name: service-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/SiriusDJ/spring-service-config
+          clone-on-start: true
 
 eureka:
   instance:
