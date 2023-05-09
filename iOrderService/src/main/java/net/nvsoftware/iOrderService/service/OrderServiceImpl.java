@@ -2,6 +2,7 @@ package net.nvsoftware.iOrderService.service;
 
 import lombok.extern.log4j.Log4j2;
 import net.nvsoftware.iOrderService.entity.OrderEntity;
+import net.nvsoftware.iOrderService.external.client.ProductServiceFeignClient;
 import net.nvsoftware.iOrderService.model.OrderRequest;
 import net.nvsoftware.iOrderService.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,12 @@ import java.time.Instant;
 @Service
 @Log4j2
 public class OrderServiceImpl implements OrderService{
-
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private ProductServiceFeignClient productServiceFeignClient;
+
     @Override
     public long placeOrder(OrderRequest orderRequest) {
         // Use OrderService(this) to create order entity with order status CREATED, save it to database
@@ -32,10 +36,15 @@ public class OrderServiceImpl implements OrderService{
                 .build();
         orderEntity = orderRepository.save(orderEntity);
         log.info("OrderService placeOrder -save to orderdb done");
+
         // CALL ProductService to check products, if ok, reduce quantity and
+        log.info("ProductServiceFeignClient: reduceQuantity start");
+        productServiceFeignClient.reduceQuantity(orderRequest.getProductId(),orderRequest.getOrderQuantity());
+        log.info("ProductServiceFeignClient: reduceQuantity done");
+
         // CALL PaymentService to charge, if Success, mark order COMPLETED, else CANCELLED
 
-//        log.info("OrderService: Did placeOrder with orderId: " + orderEntity.getOrderId());
+        //log.info("OrderService: Did placeOrder with orderId: " + orderEntity.getOrderId());
         return orderEntity.getOrderId();
     }
 }
