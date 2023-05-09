@@ -1,6 +1,7 @@
 package net.nvsoftware.iPaymentService.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,15 +12,16 @@ import java.time.Instant;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long paymentId;
     private long orderId;
-    private String PaymentMode;
+    private String paymentMode;
     private String referenceNumber;
     private long totalAmount;
     private Instant paymentDate;
-    private String PaymentStatus;
+    private String paymentStatus;
 
 }
