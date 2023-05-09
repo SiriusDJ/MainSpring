@@ -15,3 +15,4 @@ public class PaymentRequest {
     private String referenceNumber;
     private long totalAmount;
 }
+
