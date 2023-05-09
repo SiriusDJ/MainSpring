@@ -27,7 +27,7 @@ public class PaymentServiceImpl implements PaymentService{
                 .paymentStatus("SUCCESS")
                 .build();
         paymentRepository.save(paymentEntity);
-        log.info("PaymentService doPayment: Down with payment id " + paymentEntity.getPaymentId());
+        log.info("PaymentService doPayment: Done with payment id " + paymentEntity.getPaymentId());
         return paymentEntity.getPaymentId();
     }
 }
